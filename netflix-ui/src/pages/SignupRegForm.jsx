@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import HeaderRegister from "../components/HeaderRegister";
 import styled from "styled-components";
 import devices from "../assets/devices.png";
 import "../signupRegistered.css";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
+import { async } from "@firebase/util";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { firebaseAuth } from "../utils/firebase-config";
 
 export default function SignupRegForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const handleNext = () => {
-    navigate("/signup/regform");
+  const handleNext = async (e) => {
+    e.preventDefault();
+    try {
+      await createUserWithEmailAndPassword(firebaseAuth, email, password);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (currentUser){
+      console.log(currentUser)
+    } ;
+  });
+
   return (
     <>
       <Container>
@@ -19,7 +39,7 @@ export default function SignupRegForm() {
 
           <div className="simpleContainer">
             <div className="centerContainer">
-              <form>
+              <form onSubmit={handleNext}>
                 <div className="regFormContainer">
                   <div>
                     <div className="stepHeader-Container">
@@ -37,13 +57,25 @@ export default function SignupRegForm() {
                     </div>
                     <div className="contextRow">We hate paperwork, too.</div>
                     <div className="container flex column">
-                      <input type="text" placeholder="Email" />
-                      <input type="password" placeholder="Password" />
+                      <input
+                        type="email"
+                        placeholder="Email"
+                        name="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
                     </div>
                     <div className="checkbox">
                       {" "}
                       <input type="checkbox" id="checkbox" />
-                      <label for="checkbox">
+                      <label htmlFor="checkbox">
                         {" "}
                         Please do not email me Netflix special offers.
                       </label>
@@ -51,7 +83,7 @@ export default function SignupRegForm() {
                   </div>
 
                   <div className="submitBtnContainer">
-                    <button className="submitBtn" onClick={handleNext}>
+                    <button type="sumbit" className="submitBtn">
                       Next
                     </button>
                   </div>
