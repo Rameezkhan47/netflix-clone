@@ -5,9 +5,13 @@ import styled from "styled-components";
 import logo from "../assets/logo.png";
 import profile from "../assets/profile-icon.jpg";
 import { firebaseAuth } from "../utils/firebase-config";
-import { FaAngleDown, FaSearch } from "react-icons/fa";
+import { Search, ArrowDropDown } from "@mui/icons-material";
+import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
+import { Select, MenuItem } from "@mui/material";
+
 export default function Navbar({ isScrolled }) {
   const [showSearch, setShowSearch] = useState(false);
+  const [showDropDown, setShowDropDown] = useState(false);
   const [inputHover, setInputHover] = useState(false);
   const links = [
     { name: "Home", link: "/" },
@@ -43,8 +47,9 @@ export default function Navbar({ isScrolled }) {
                 }
               }}
             >
-              <FaSearch />
+              <Search />
             </button>
+
             <input
               type="text"
               placeholder="Search"
@@ -56,14 +61,14 @@ export default function Navbar({ isScrolled }) {
               }}
             />
           </div>
-              <img className="img" src={profile} alt="profile" />
-            
-          <button onClick={() => signOut(firebaseAuth)}>
-            
-          <FaAngleDown />
-          </button>
-   
 
+          <NotificationsOutlinedIcon />
+
+          <img className="img" src={profile} alt="profile" />
+
+          <button onClick={() => signOut(firebaseAuth)}>
+            <ArrowDropDown />
+          </button>
         </div>
       </nav>
     </Container>
@@ -105,71 +110,65 @@ const Container = styled.div`
       }
     }
     .right {
-        
-            .img {
-                height: 2rem;
-                border-radius: 4px;
-              }
-              
+      .img {
+        height: 2rem;
+        border-radius: 4px;
+      }
+
       gap: 1rem;
-      button {    
+      button {
         background-color: transparent;
         border: none;
         cursor: pointer;
         &:focus {
           outline: none;
         }
-        
+
         svg {
           color: white;
           font-size: 1.2rem;
         }
-        
-        
-
-        }
-
       }
-      .search {
-        display: flex;
-        gap: 0.4rem;
-        align-items: center;
-        justify-content: center;
-        padding: 0.2rem;
-        padding-left: 0.5rem;
-        button {
-          background-color: transparent;
-          border: none;
-          &:focus {
-            outline: none;
-          }
-          svg {
-            color: white;
-            font-size: 1.3rem;
-          }
+    }
+    .search {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+      justify-content: center;
+      padding: 0.2rem;
+      padding-left: 0.5rem;
+      button {
+        background-color: transparent;
+        border: none;
+        &:focus {
+          outline: none;
         }
-        input {
-          width: 0;
-          opacity: 0;
-          visibility: hidden;
-          transition: 0.3s ease-in-out;
-          background-color: transparent;
-          border: none;
+        svg {
           color: white;
-          &:focus {
-            outline: none;
-          }
+          font-size: 2rem;
         }
       }
-      .show-search {
-        border: 1px solid white;
-        background-color: rgba(0, 0, 0, 0.6);
-        input {
-          width: 100%;
-          opacity: 1;
-          visibility: visible;
-          padding: 0.3rem;
+      input {
+        width: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s ease-in-out;
+        background-color: transparent;
+        border: none;
+        color: white;
+        &:focus {
+          outline: none;
         }
+      }
+    }
+    .show-search {
+      border: 1px solid white;
+      background-color: rgba(0, 0, 0, 0.6);
+      input {
+        width: 100%;
+        opacity: 1;
+        visibility: visible;
+        padding: 0.3rem;
       }
     }
   }
