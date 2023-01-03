@@ -4,6 +4,7 @@ import styled from "styled-components";
 import devices from "../assets/devices.png";
 import "../signupRegistered.css";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 export default function SignupRegForm() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export default function SignupRegForm() {
   };
   return (
     <>
-      <Test>
+      <Container>
         <div className="basicLayout">
           <HeaderRegister login />
 
@@ -38,22 +39,15 @@ export default function SignupRegForm() {
                     <div className="container flex column">
                       <input type="text" placeholder="Email" />
                       <input type="password" placeholder="Password" />
-               
                     </div>
                     <div className="checkbox">
+                      {" "}
+                      <input type="checkbox" id="checkbox" />
+                      <label for="checkbox">
                         {" "}
-               
-                        <input
-                          type="checkbox"
-                          id="checkbox"
-                          
-                          
-                        />
-                                 <label for="checkbox">
-                          {" "}
-                          Please do not email me Netflix special offers.
-                        </label>
-                      </div>
+                        Please do not email me Netflix special offers.
+                      </label>
+                    </div>
                   </div>
 
                   <div className="submitBtnContainer">
@@ -65,133 +59,14 @@ export default function SignupRegForm() {
               </form>
             </div>
           </div>
-          <div className="site-footer-wrapper">
-            <div className="footer-divider"> </div>
-            <div className="site-footer">
-              <p className="footer-top">
-                <a
-                  className="footer-top-a"
-                  href="https://help.netflix.com/contactus"
-                >
-                  Questions? Contact us.
-                </a>
-              </p>
-              <ul className="footer-links">
-                <li
-                  className="footer-link-item"
-                  placeholder="footer_responsive_link_faq_item"
-                >
-                  <a
-                    className="footer-link"
-                    data-uia="footer-link"
-                    href="https://help.netflix.com/support/412"
-                    placeholder="footer_responsive_link_faq"
-                  >
-                    <span id="" data-uia="data-uia-footer-label">
-                      FAQ
-                    </span>
-                  </a>
-                </li>
-                <li
-                  className="footer-link-item"
-                  placeholder="footer_responsive_link_help_item"
-                >
-                  <a
-                    className="footer-link"
-                    data-uia="footer-link"
-                    href="https://help.netflix.com"
-                    placeholder="footer_responsive_link_help"
-                  >
-                    <span id="" data-uia="data-uia-footer-label">
-                      Help Center
-                    </span>
-                  </a>
-                </li>
-                <li
-                  className="footer-link-item"
-                  placeholder="footer_responsive_link_netflix_shop_item"
-                >
-                  <a
-                    className="footer-link"
-                    data-uia="footer-link"
-                    href="https://netflix.shop/"
-                    placeholder="footer_responsive_link_netflix_shop"
-                  >
-                    <span id="" data-uia="data-uia-footer-label">
-                      Netflix Shop
-                    </span>
-                  </a>
-                </li>
-                <li
-                  className="footer-link-item"
-                  placeholder="footer_responsive_link_terms_item"
-                >
-                  <a
-                    className="footer-link"
-                    data-uia="footer-link"
-                    href="https://help.netflix.com/legal/termsofuse"
-                    placeholder="footer_responsive_link_terms"
-                  >
-                    <span id="" data-uia="data-uia-footer-label">
-                      Terms of Use
-                    </span>
-                  </a>
-                </li>
-                <li
-                  className="footer-link-item"
-                  placeholder="footer_responsive_link_privacy_separate_link_item"
-                >
-                  <a
-                    className="footer-link"
-                    data-uia="footer-link"
-                    href="https://help.netflix.com/legal/privacy"
-                    placeholder="footer_responsive_link_privacy_separate_link"
-                  >
-                    <span id="" data-uia="data-uia-footer-label">
-                      Privacy
-                    </span>
-                  </a>
-                </li>
-                <li
-                  className="footer-link-item"
-                  placeholder="footer_responsive_link_cookies_separate_link_item"
-                >
-                  <a
-                    className="footer-link"
-                    data-uia="footer-link"
-                    href="#"
-                    placeholder="footer_responsive_link_cookies_separate_link"
-                  >
-                    <span id="" data-uia="data-uia-footer-label">
-                      Cookie Preferences
-                    </span>
-                  </a>
-                </li>
-                <li
-                  className="footer-link-item"
-                  placeholder="footer_responsive_link_corporate_information_item"
-                >
-                  <a
-                    className="footer-link"
-                    data-uia="footer-link"
-                    href="https://help.netflix.com/legal/corpinfo"
-                    placeholder="footer_responsive_link_corporate_information"
-                  >
-                    <span id="" data-uia="data-uia-footer-label">
-                      Corporate Information
-                    </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <Footer />
         </div>
-      </Test>
+      </Container>
     </>
   );
 }
 
-const Test = styled.div`
+const Container = styled.div`
 .basicLayout{
   display: flex;
   flex-direction:column;
