@@ -11,9 +11,8 @@ import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp';
 
 
 
-
 function Netflix () {
-  const navigate = useNavigate
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled]= useState(false)
   window.onscroll = () =>{
     setIsScrolled(window.pageYOffset===0?false:true);
@@ -47,7 +46,7 @@ function Netflix () {
           </div>
         </div>
       </div>
-    </Container>
+   </Container>
   )
 }
 const Container = styled.div`

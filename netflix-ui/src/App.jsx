@@ -5,6 +5,8 @@ import Login from "./pages/Login";
 import Netflix from "./pages/Netflix";
 import SignupRegistered from "./pages/SignupRegistered";
 import SignupRegForm from "./pages/SignupRegForm";
+import Player from "./pages/Player";
+
 
 
 
@@ -16,7 +18,8 @@ function App() {
       <Route exact path="/signup" element={<Signup />} />
       <Route exact path="/signup/registered" element={<SignupRegistered />} />
       <Route exact path="/signup/regform" element={<SignupRegForm />} />
-            <Route exact path="/" element={<Netflix/>}/>
+      <Route exact path="/player" element={<Player />} />
+      <Route exact path="/" element={<Netflix/>}/>
 
 
     </Routes>
