@@ -1,23 +1,27 @@
-import React, { useState } from 'react'
-import  Navbar from "../components/Navbar";
-import BackgroundImage from '../assets/home.jpg';
-import MovieLogo from '../assets/homerlogo.jpg';
-import{FaPlay} from "react-icons/fa";
-import { AiOutlineInfoCircle } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import BackgroundImage from "../assets/home.jpg";
+import MovieLogo from "../assets/homerlogo.jpg";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp';
-import AnimatedPage from '../utils/AnimatedPage';
+import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
+import { useDispatch } from "react-redux";
+import {getGenres} from "../store"
+import AnimatedPage from "../utils/AnimatedPage";
 
 
+function Netflix() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getGenres());
+  }, []);
 
-
-function Netflix () {
   const navigate = useNavigate();
-  const [isScrolled, setIsScrolled]= useState(false)
-  window.onscroll = () =>{
-    setIsScrolled(window.pageYOffset===0?false:true);
-    return()=>(window.onscroll = null)
+  const [isScrolled, setIsScrolled] = useState(false);
+  window.onscroll = () => {
+    setIsScrolled(window.pageYOffset === 0 ? false : true);
+    return () => (window.onscroll = null);
   };
   return (
     <Container>
@@ -37,7 +41,7 @@ function Netflix () {
               onClick={() => navigate("/player")}
               className="flex j-center a-center"
             >
-              <PlayArrowSharpIcon fontSize='large' />
+              <PlayArrowSharpIcon fontSize="large" />
               Play
             </button>
             <button className="flex j-center a-center">
@@ -47,8 +51,8 @@ function Netflix () {
           </div>
         </div>
       </div>
-   </Container>
-  )
+    </Container>
+  );
 }
 const Container = styled.div`
   background-color: black;

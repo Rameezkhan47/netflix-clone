@@ -19,7 +19,7 @@ function App() {
  // pass it to
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode="wait">
     <Routes key={location.pathname} location={location}>
       <Route exact path="login" element={<Login/>}/>
       <Route exact path="/signup" element={<Signup />} />
