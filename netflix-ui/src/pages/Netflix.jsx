@@ -7,6 +7,7 @@ import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp';
+import AnimatedPage from '../utils/AnimatedPage';
 
 
 
@@ -51,7 +52,9 @@ function Netflix () {
 }
 const Container = styled.div`
   background-color: black;
+  
   .hero {
+    transition: 0.3s ease-in-out;
     position: relative;
     .background-image {
       filter: brightness(60%);
