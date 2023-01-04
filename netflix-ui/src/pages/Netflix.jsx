@@ -6,16 +6,27 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
-import { useDispatch } from "react-redux";
-import {getGenres} from "../store"
-import AnimatedPage from "../utils/AnimatedPage";
+import { useDispatch, useSelector } from "react-redux";
+import {getGenres ,fetchMovies} from "../store"
 
 
 function Netflix() {
   const dispatch = useDispatch();
+  const genresLoaded = useSelector((state)=>state.netflix.genresLoaded)
+  const movies = useSelector((state)=>state.netflix.movies)
+
+
+
   useEffect(() => {
     dispatch(getGenres());
   }, []);
+  
+
+  useEffect(() => {
+    dispatch(fetchMovies({type:'all'}));
+  }, []);
+  console.log("movies are", movies)
+
 
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -107,3 +118,5 @@ const Container = styled.div`
   }
 `;
 export default Netflix;
+
+
