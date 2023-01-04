@@ -7,6 +7,7 @@ import BackgroundImage from "../components/BackgroundImage";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
 import Header from "../components/Header";
+import AnimatedPage from "../utils/AnimatedPage";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -24,6 +25,7 @@ export default function Login() {
   //   if (currentUser) navigate("/");
   // });
   return (
+    <AnimatedPage>
     <Container>
       <BackgroundImage />
       <div className="content">
@@ -62,6 +64,7 @@ export default function Login() {
         </div>
       </div>
     </Container>
+    </AnimatedPage>
   );
 }
 const Container = styled.div`

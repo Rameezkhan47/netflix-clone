@@ -3,6 +3,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import BackgroundImage from "../components/BackgroundImage";
 import Header from "../components/Header";
+import AnimatedPage from "../utils/AnimatedPage";
 
 function Signup() {
   const navigate = useNavigate()
@@ -13,6 +14,7 @@ function Signup() {
   };
   
   return (
+    <AnimatedPage>
     <Container>
       <BackgroundImage />
       <div className="content">
@@ -39,6 +41,7 @@ function Signup() {
         </div>
       </div>
     </Container>
+    </AnimatedPage>
   );
 }
 const Container = styled.div`

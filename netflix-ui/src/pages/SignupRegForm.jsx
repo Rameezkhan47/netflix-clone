@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import HeaderRegister from "../components/HeaderRegister";
 import styled from "styled-components";
-import devices from "../assets/devices.png";
-import "../signupRegistered.css";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import { async } from "@firebase/util";
@@ -11,6 +9,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
+import AnimatedPage from "../utils/AnimatedPage";
 
 export default function SignupRegForm() {
   const [email, setEmail] = useState("");
@@ -32,7 +31,7 @@ export default function SignupRegForm() {
   });
 
   return (
-    <>
+    <AnimatedPage>
       <Container>
         <div className="basicLayout">
           <HeaderRegister login />
@@ -94,11 +93,12 @@ export default function SignupRegForm() {
           <Footer />
         </div>
       </Container>
-    </>
+</AnimatedPage>
   );
 }
 
 const Container = styled.div`
+
 .basicLayout{
   display: flex;
   flex-direction:column;

@@ -4,26 +4,23 @@ import styled from "styled-components";
 import devices from "../assets/devices.png";
 import "../signupRegistered.css";
 import { useNavigate } from "react-router-dom";
-import {firebaseAuth } from "../utils/firebase-config";
+import { firebaseAuth } from "../utils/firebase-config";
 import Footer from "../components/Footer";
-
+import AnimatedPage from "../utils/AnimatedPage";
 
 export default function SignupRegistered() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleNext = () => {
-
-    navigate("/signup/regform")
+    navigate("/signup/regform");
   };
 
   return (
+    <AnimatedPage>
+      <Container>
+        <div className="basicLayout">
+          <HeaderRegister login />
 
-    <>
-    <Container>
-      <div className="basicLayout">
-
-        <HeaderRegister login />
-        
           <div className="simpleContainer">
             <div className="centerContainer">
               <div className="regContainer">
@@ -48,18 +45,16 @@ export default function SignupRegistered() {
                 </div>
               </div>
               <div className="submitBtnContainer">
-                <button className="submitBtn" onClick={handleNext}>Next</button>
+                <button className="submitBtn" onClick={handleNext}>
+                  Next
+                </button>
               </div>
             </div>
           </div>
-          <Footer/>
-
-          
-        
-      </div>
- 
+          <Footer />
+        </div>
       </Container>
-    </>
+    </AnimatedPage>
   );
 }
 
