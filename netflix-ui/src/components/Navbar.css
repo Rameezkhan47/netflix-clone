@@ -1,0 +1,434 @@
+.scrolled {
+  background-color: black;
+}
+.checkbtn{
+    display: none;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  height: 4.5rem;
+  width: 100%;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  padding: 0 2rem;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+}
+.left {
+  gap: 2rem;
+}
+.img-left {
+  height: 4rem;
+}
+.links {
+  list-style-type: none;
+  gap: 2rem;
+}
+li > a {
+  color: white;
+  text-decoration: none;
+}
+.right {
+  gap: 1rem;
+}
+.img-right {
+  height: 2rem;
+  border-radius: 4px;
+}
+.right > button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.right > button:focus {
+  outline: none;
+}
+.right > button > svg {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.search {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem;
+  padding-left: 0.5rem;
+}
+.search > button {
+  background-color: transparent;
+  border: none;
+}
+.search > button:focus {
+  outline: none;
+}
+.search > button > svg {
+  color: white;
+  font-size: 2rem;
+}
+.search > input {
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease-in-out;
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+.search > input:focus {
+  outline: none;
+}
+
+.show-search {
+  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.show-search > input {
+  width: 100%;
+  opacity: 1;
+  visibility: visible;
+  padding: 0.3rem;
+}
+
+@media screen and (max-width: 992px) {
+  nav {
+    height: 56px;
+    width: 100%;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    padding: 0 24px;
+    align-items: center;
+  }
+  .left {
+    gap: 24px;
+  }
+  .img-left {
+    height: 50px;
+  }
+  .links {
+    list-style-type: none;
+    gap: 24px;
+  }
+  li > a {
+    color: white;
+    text-decoration: none;
+  }
+  .right {
+    gap: 12px;
+  }
+  .img-right {
+    height: 24px;
+    border-radius: 3px;
+  }
+  .right > button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .right > button:focus {
+    outline: none;
+  }
+  .right > button > svg {
+    color: white;
+    font-size: 15px;
+  }
+
+  .search {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    padding-left: 6px;
+  }
+  .search > button {
+    background-color: transparent;
+    border: none;
+  }
+  .search > button:focus {
+    outline: none;
+  }
+  .search > button > svg {
+    color: white;
+    font-size: 24px;
+  }
+  .search > input {
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+    background-color: transparent;
+    border: none;
+    color: white;
+  }
+  .search > input:focus {
+    outline: none;
+  }
+
+  .show-search {
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  .show-search > input {
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    padding: 3px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    height: 43px;
+    width: 100%;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    padding: 0 18px;
+    align-items: center;
+  }
+  .left {
+    gap: 18px;
+  }
+  .img-left {
+    height: 38px;
+  }
+  .links {
+    list-style-type: none;
+    gap: 18px;
+  }
+  li > a {
+    color: white;
+    text-decoration: none;
+  }
+  .right {
+    gap: 9px;
+  }
+  .img-right {
+    height: 18px;
+    border-radius: 2px;
+  }
+  .right > button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .right > button:focus {
+    outline: none;
+  }
+  .right > button > svg {
+    color: white;
+    font-size: 12px;
+  }
+
+  .search {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    padding-left: 5px;
+  }
+  .search > button {
+    background-color: transparent;
+    border: none;
+  }
+  .search > button:focus {
+    outline: none;
+  }
+  .search > button > svg {
+    color: white;
+    font-size: 18px;
+  }
+  .search > input {
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+    background-color: transparent;
+    border: none;
+    color: white;
+  }
+  .search > input:focus {
+    outline: none;
+  }
+
+  .show-search {
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 0.4px solid white;
+
+  }
+  .show-search > input {
+    width: 70%;    opacity: 1;
+    visibility: visible;
+    padding: 1px;
+    font-size: 10px;
+  }
+  .show-search > button > svg {
+    color: white;
+    font-size: 14px;
+    margin-top:2px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+    nav {
+      height: 33px;
+      width: 100%;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      z-index: 2;
+      padding: 0 18px;
+      align-items: center;
+    }
+    .left {
+      gap: 13px;
+    }
+    .img-left {
+      height: 30px;
+    }
+    .links {
+      list-style-type: none;
+      gap: 13px;
+    }
+    li > a {
+      color: white;
+      text-decoration: none;
+      font-size: 10px;
+    }
+    .right {
+      gap: 7px;
+    }
+    .img-right {
+      height: 18px;
+      border-radius: 1px;
+    }
+    .right > button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    .right > button:focus {
+      outline: none;
+    }
+    .right > button > svg {
+      color: white;
+      font-size: 12px;
+    }
+  
+    .search {
+      display: flex;
+      gap: 3px;
+      align-items: center;
+      justify-content: center;
+      padding: 1px;
+      padding-left: 4px;
+    }
+    .search > button {
+      background-color: transparent;
+      border: none;
+    }
+    .search > button:focus {
+      outline: none;
+    }
+    .search > button > svg {
+      color: white;
+      font-size: 13px;
+    }
+    .search > input {
+      width: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s ease-in-out;
+      background-color: transparent;
+      border: none;
+      color: white;
+    }
+    .search > input:focus {
+      outline: none;
+    }
+  
+    .show-search {
+      background-color: rgba(0, 0, 0, 0.6);
+      border: 0.4px solid white;
+  
+    }
+    .show-search > input {
+      width: 70px;
+      opacity: 1;
+      visibility: visible;
+      padding: 1px;
+      font-size: 8px;
+    }
+    .show-search > button > svg {
+      color: white;
+      font-size: 11px;
+      margin-top:1px;
+    }
+  }
+
+  @media screen and (max-width: 476px) {
+    .search{
+        display: none;
+    }
+    .show-search > input {
+        width: 20px;
+        opacity: 1;
+        visibility: visible;
+        padding: 1px;
+        font-size: 8px;
+      }
+      .show-search > button > svg {
+        color: white;
+        font-size: 11px;
+        margin-top:1px;
+      }
+      .left {
+        gap: 10px;
+      }
+      .img-left {
+        height: 25px;
+      }
+      .links {
+        list-style-type: none;
+        gap: 10px;
+      }
+      li > a {
+        color: white;
+        text-decoration: none;
+        font-size: 9px;
+      }
+      .right {
+        gap: 4px;
+      }
+      .img-right {
+        height: 15px;
+        border-radius: 1px;
+      }
+      .right > button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+      .right > button:focus {
+        outline: none;
+      }
+      .right > button > svg {
+        color: white;
+        font-size: 12px;
+      }
+    }
+  
+
+
+
+

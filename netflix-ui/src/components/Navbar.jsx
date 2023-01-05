@@ -5,8 +5,10 @@ import styled from "styled-components";
 import logo from "../assets/logo.png";
 import profile from "../assets/profile-icon.jpg";
 import { firebaseAuth } from "../utils/firebase-config";
-import { Search, ArrowDropDown } from "@mui/icons-material";
+import { Search, ArrowDropDown, bars } from "@mui/icons-material";
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
+import "./Navbar.css"
+
 
 export default function Navbar(props) {
   const [showSearch, setShowSearch] = useState(false);
@@ -19,12 +21,13 @@ export default function Navbar(props) {
   ];
 
   return (
-    <Container>
+    <div>
       <nav className={`${props.isScrolled ? "scrolled" : ""} flex`}>
         <div className="left flex a-center">
           <div className="brand flex a-center j-center">
-            <img src={logo} alt="Logo" />
+            <img className="img-left" src={logo} alt="Logo" />
           </div>
+
           <ul className="links flex">
             {links.map(({ name, link }) => {
               return (
@@ -55,15 +58,15 @@ export default function Navbar(props) {
               onMouseEnter={() => setInputHover(true)}
               onMouseLeave={() => setInputHover(false)}
               onBlur={() => {
-                setShowSearch(false);
-                setInputHover(false);
+                setShowSearch(true);
+                setInputHover(true);
               }}
             />
           </div>
 
           <NotificationsOutlinedIcon />
 
-              <img className="img" src={profile} alt="profile" />
+              <img className="img-right" src={profile} alt="profile" />
             
           <button onClick={() => signOut(firebaseAuth)}>
 
@@ -74,7 +77,7 @@ export default function Navbar(props) {
 
         </div>
       </nav>
-    </Container>
+    </div>
   );
 }
 
@@ -99,7 +102,7 @@ const Container = styled.div`
     .left {
       gap: 2rem;
       .brand {
-        img {
+        .img-left {
           height: 4rem;
         }
       }
@@ -116,7 +119,7 @@ const Container = styled.div`
     }
     .right {
         
-            .img {
+            .img-right {
                 height: 2rem;
                 border-radius: 4px;
               }

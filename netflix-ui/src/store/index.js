@@ -19,21 +19,21 @@ export const getGenres = createAsyncThunk("netflix/genres", async () => {
 });
 
 const createArrayFromRawData = (array, moviesArray, genres) => {
-  array.forEach((movie) => {
-    const movieGenres = [];
-    movie.genre_ids.forEach((genre) => {
-      const name = genres.find(({ id }) => id === genre);
-      if (name) movieGenres.push(name.name);
-    });
-    if (movie.backdrop_path)
-      moviesArray.push({
-        id: movie.id,
-        name: movie?.original_name ? movie.original_name : movie.original_title,
-        image: movie.backdrop_path,
-        genres: movieGenres.slice(0, 3),
+    array.forEach((movie) => {
+      const movieGenres = [];
+      movie.genre_ids.forEach((genre) => {
+        const name = genres.find(({ id }) => id === genre);
+        if (name) movieGenres.push(name.name);
       });
-  });
-};
+      if (movie.backdrop_path)
+        moviesArray.push({
+          id: movie.id,
+          name: movie?.original_name ? movie.original_name : movie.original_title,
+          image: movie.backdrop_path,
+          genres: movieGenres.slice(0, 3),
+        });
+    });
+  };
 
 const getRawData = async (api, genres, paging = false) => {
   const moviesArray = [];
