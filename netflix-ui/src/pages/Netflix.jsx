@@ -4,7 +4,7 @@ import BackgroundImage from "../assets/home.jpg";
 import MovieLogo from "../assets/homerlogo.jpg";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import Slider from "../components/Slider"
 import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
 import { useDispatch, useSelector } from "react-redux";
 import {getGenres ,fetchMovies} from "../store"
@@ -63,7 +63,7 @@ function Netflix() {
           </div>
         </div>
       </div>
-
+    <Slider movies={movies}/>
     </div>
   );
 }
