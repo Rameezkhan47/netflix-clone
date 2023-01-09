@@ -6,23 +6,32 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
 import { BiChevronDown } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
-import "./Card.css"
-import styled from "styled-components";
+import AnimatedPage from "../utils/AnimatedPage";
+import "./Card.css";
 
-function Card(props) {
+export default React.memo( function Card(props) {
   const [isHovered, setIsHovered] = useState(false);
-  const navigate = useNavigate;
+  const navigate = useNavigate();
+  let timeout;
+  const mouseLeaveHandler = () => {
+    setIsHovered(false);
+    clearTimeout(timeout);
+  };
   return (
-    <div className="main-container"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+    <div
+      className="main-container"
+      onMouseEnter={() =>
+        (timeout = setTimeout(() => {
+          setIsHovered(true);
+        }, 500))
+      }
+      onMouseLeave={mouseLeaveHandler}
     >
       <img
         src={`https://image.tmdb.org/t/p/w500${props.movieData.image}`}
         alt="card"
         onClick={() => navigate("/player")}
       />
-
       {isHovered && (
         <div className="hover">
           <div className="image-video-container">
@@ -52,12 +61,9 @@ function Card(props) {
                 <RiThumbUpFill title="Like" />
                 <RiThumbDownFill title="Dislike" />
                 {props.isLiked ? (
-                  <BsCheck
-                    title="Remove from List"
-                    
-                  />
+                  <BsCheck title="Remove from List" />
                 ) : (
-                  <AiOutlinePlus title="Add to my list"/>
+                  <AiOutlinePlus title="Add to my list" />
                 )}
               </div>
               <div className="info">
@@ -76,8 +82,5 @@ function Card(props) {
       )}
     </div>
   );
-};
+})
 
-
-
-export default Card;

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import BackgroundImage from "../assets/home.jpg";
 import MovieLogo from "../assets/homerlogo.jpg";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
