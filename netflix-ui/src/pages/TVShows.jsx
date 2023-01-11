@@ -11,7 +11,7 @@ import SelectGenres from "../components/SelectGenres";
 import NotAvailable from "../components/NotAvailable";
 import BackgroundImage from "../components/BackgroundImage";
 
-export default function MoviePage() {
+export default function TVShows() {
   const dispatch = useDispatch();
   const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
   const movies = useSelector((state) => state.netflix.movies);
@@ -27,8 +27,8 @@ export default function MoviePage() {
 
   useEffect(() => {
     if (genresLoaded) {
-      dispatch(fetchMovies({ genres, type: "movie" }));
-    }//load content when the page will first render
+      dispatch(fetchMovies({ genres, type: "tv" }));
+    } //load content when the page will first render
   }, [genresLoaded]);
   // onAuthStateChanged(firebaseAuth, (currentUser) => {
   //   if (currentUser) navigate("/");
@@ -43,9 +43,8 @@ export default function MoviePage() {
       <Navbar isScrolled={isScrolled} />
     </div>
     <BackgroundImage/>
-
     <div className="data">
-      <SelectGenres genres={genres} type="movie" />
+      <SelectGenres genres={genres} type="tv" />
       {movies.length ? <Slider movies={movies} /> : <NotAvailable />}
     </div>
   </Container>

@@ -15,14 +15,19 @@ function SelectGenres(props) {
     );
 
   };
-  return <Select className="flex" onChange={dispatchHandler}>
+  return (
+    <>
+  <Select className="flex" onChange={dispatchHandler}>
+
     {
         props.genres.map((genre)=>{
-            return <option key={genre.id} value={genre.id}>{genre.name}</option>
+            return (<option id="option" key={genre.id} value={genre.id}>{genre.name}</option>)
 
         })
     }
-  </Select>;
+  </Select>
+  </>
+  )
 }
 const Select = styled.select`
   margin-left: 5rem;

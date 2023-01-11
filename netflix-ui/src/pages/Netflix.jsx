@@ -8,21 +8,18 @@ import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
 import { useDispatch, useSelector } from "react-redux";
 import { getGenres, fetchMovies } from "../store";
 import "./Netflix.css";
+import BackgroundImage from "../components/BackgroundImage";
 
 function Netflix() {
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.netflix.movies);
-  const genres = useSelector((state) => state.netflix.genres);
 
-  console.log(genres);
 
-  useEffect(() => {
-    dispatch(getGenres());
-  }, []);
+
 
   useEffect(() => {
     dispatch(fetchMovies({ type: "all" }));
-  }, []);
+  }, []);//load content when the page will first render
 
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,33 +30,7 @@ function Netflix() {
   return (
     <div>
       <Navbar isScrolled={isScrolled} />
-      <div className="hero" BackgroundImage>
-        <img
-          src={
-            "https://www.themoviedb.org/t/p/original/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg"
-          }
-          alt="background"
-          className="background-image"
-        />
-        <div className="container">
-          <div className="logo">
-            <img className="img" src={MovieLogo} alt="Movie Logo" />
-          </div>
-          <div className="buttons flex">
-            <button
-              onClick={() => navigate("/player")}
-              className="flex j-center a-center"
-            >
-              <PlayArrowSharpIcon fontSize="large" />
-              Play
-            </button>
-            <button className="flex j-center a-center">
-              <AiOutlineInfoCircle />
-              More Info
-            </button>
-          </div>
-        </div>
-      </div>
+    <BackgroundImage/>
       <Slider movies={movies} />
     </div>
   );

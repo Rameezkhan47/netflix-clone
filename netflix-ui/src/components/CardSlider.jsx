@@ -24,7 +24,6 @@ function CardSlider(props) {
   return (
     <div
       className="flex column contain "
-      showControls={showControls}
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => setShowControls(false)}
     >
