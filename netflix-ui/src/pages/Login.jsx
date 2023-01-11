@@ -33,7 +33,7 @@ export default function Login() {
         <div className="login-body">
           <div className="form-container flex column a-center j-center">
             <div className="form flex column a-center j-center">
-              <div className="container flex column">
+              <div className="contain flex column">
                 <div className="title">
                   <h3>Sign In</h3>
                 </div>
@@ -98,7 +98,7 @@ const Container = styled.div`
             font-weight: 500;
           }
         }
-        .container {
+        .contain {
           flex-grow: 1;
           padding-top: 1rem;
           gap: 1rem;

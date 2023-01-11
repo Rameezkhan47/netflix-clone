@@ -8,20 +8,20 @@ function Slider(props) {
   return (
     <div>
       <CardSlider
-        title="Binge-worthy US TV Thrillers &#x26 Mysteries"
-        data={getMoviesFromRange(0, 10)}
+        title="Binge-worthy US TV Thrillers & Mysteries"
+        data={getMoviesFromRange(0, 12)}
       />
-      <CardSlider title="Trending Now" data={getMoviesFromRange(10, 20)} />
-      <CardSlider title="30-Minute Laughs" data={getMoviesFromRange(20, 30)} />
+      <CardSlider title="Trending Now" data={getMoviesFromRange(12, 24)} />
+      <CardSlider title="30-Minute Laughs" data={getMoviesFromRange(24, 36)} />
       <CardSlider
         title="Award Winning Bingeworthy TV Shows"
-        data={getMoviesFromRange(30, 40)}
+        data={getMoviesFromRange(36, 48)}
       />
       <CardSlider
         title="Popular on Netflix"
-        data={getMoviesFromRange(40, 50)}
+        data={getMoviesFromRange(50, 62)}
       />
-      <CardSlider title="New Releases" data={getMoviesFromRange(50, 60)} />
+      <CardSlider title="New Releases" data={getMoviesFromRange(58, 70)} />
     </div>
   );
 }

@@ -45,7 +45,7 @@ function Netflix() {
         />
         <div className="container">
           <div className="logo">
-            <img src={MovieLogo} alt="Movie Logo" />
+            <img className="img" src={MovieLogo} alt="Movie Logo" />
           </div>
           <div className="buttons flex">
             <button

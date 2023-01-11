@@ -15,7 +15,7 @@
     position: absolute;
     bottom: 5rem;
 }
-.logo>img {
+.logo>.img {
     width: 450px;
     margin-left: 1rem;
 }
@@ -33,6 +33,8 @@
     border: none;
     cursor: pointer;
     transition: 0.2s ease-in-out;
+    background-color: white;
+    color: black;
   }
   .buttons>button:nth-of-type(2)>svg{
     font-size: 32px;
@@ -51,7 +53,7 @@
     bottom: 3rem;
 }
 
-.logo>img {
+.logo>.img {
     width: 288px;
     padding-top: 7.5rem;
     margin-left: 12px;
@@ -102,7 +104,7 @@
     position: absolute;
     bottom: 1rem;
 }
-.logo>img {
+.logo>.img {
     width: 295px;
     padding-top: 5.7rem;
     margin-left: 9px;
@@ -139,7 +141,7 @@
     position: absolute;
     bottom: 0.8rem;
 }
-.logo>img {
+.logo>i.mg {
     width: 226px;
     padding-top: 4.3rem;
     margin-left: 7px;
@@ -161,8 +163,7 @@
     cursor: pointer;
     transition: 0.2s ease-in-out;
   }
-  .buttons>button>svg{
-  }
+
   .buttons>button:nth-of-type(2)>svg{
     font-size: 24px;
   }

@@ -9,8 +9,8 @@ export default function Header(props) {
     <div>
       {" "}
       <Container className="flex a-center j-between">
-        <div className="logo">
-          <img src={logo} alt="logo" />
+        <div className="icon">
+          <img className="img" src={logo} alt="logo" />
         </div>
         <a onClick={() => navigate(props.login ? "/login" : "/signup")}>
           Sign In
@@ -24,7 +24,7 @@ const Container = styled.div`
 border-bottom: 1px solid #e6e6e6;
 
 padding: 0 3rem;
-  .logo {
+  .icon {
     img {
       height: 5.5rem;
     }

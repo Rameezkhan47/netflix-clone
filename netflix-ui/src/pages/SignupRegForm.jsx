@@ -55,7 +55,7 @@ export default function SignupRegForm() {
                       Just a few more steps and you're finished!
                     </div>
                     <div className="contextRow">We hate paperwork, too.</div>
-                    <div className="container flex column">
+                    <div className="contain flex column">
                       <input
                         type="email"
                         placeholder="Email"
@@ -156,23 +156,7 @@ const Container = styled.div`
     max-width: 440px;
     text-align: left;
 }
-.stepLogoContainer{
-  display: inline-block;
-  text-align: center;
 
-}
-
-.stepLogo{
-  margin: 100px 0 20px;
-  width: 265px;
-  display: block;
-  background-size: 260px;
-  height: 90px;
-  
-  img{
-    height: 4rem
-  }
-}
 .stepHeader {
   display: inline-block;
   margin-top: 20px;
@@ -220,71 +204,10 @@ button {
   width:27rem;
 
 }
-.site-footer-wrapper {
-  background-color: #f3f3f3;
-  opacity: 1;
-  min-width: 190px;
-    padding-bottom: 20px;
-    position: relative;
-    width: 100%;
-    color: #737373;
-    
-}
-.footer-divider{
-  border-top: 1px solid #e6e6e6;
-  height: 0;
-  width: 100%;
-  color: #737373;
-  font-size: 1em;
-}
-.site-footer{
-  margin: 0 auto;
-    padding-top: 30px;
-    width: 90%;
-    position: bottom;
-}
-.footer-top{
-
-  margin: 0 0 30px;
-    display: block;
 
 
-  
-}
-.footer-top-a{
-  color: #737373;
-  text-decoration-line: none;
-}
-.footer-links{
-  
-  margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 13px;
-    max-width: 1000px;
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-}
-.footer-link-item{
-  list-style: none;
-  margin-left: 0;
-  box-sizing: border-box;
-    display: inline-block;
-    margin-bottom: 16px;
-    min-width: 100px;
-    padding: 0 12px 0 0;
-    vertical-align: top;
-    width: 25%;
-    a{
-      color: #737373;    
-      text-decoration-line: none;
-    }
-}
-.container {
+
+.contain {
     padding-top: 1rem;
     gap: 0.5rem;
     input {
