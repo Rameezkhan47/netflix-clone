@@ -3,30 +3,26 @@ import Navbar from "../components/Navbar";
 import MovieLogo from "../assets/homerlogo.jpg";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import Slider from "../components/Slider"
+import Slider from "../components/Slider";
 import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
 import { useDispatch, useSelector } from "react-redux";
-import {getGenres ,fetchMovies} from "../store"
-import "./Netflix.css"
-
+import { getGenres, fetchMovies } from "../store";
+import "./Netflix.css";
 
 function Netflix() {
   const dispatch = useDispatch();
-  const genresLoaded = useSelector((state)=>state.netflix.genresLoaded)
-  const movies = useSelector((state)=>state.netflix.movies)
+  const movies = useSelector((state) => state.netflix.movies);
+  const genres = useSelector((state) => state.netflix.genres);
 
-
+  console.log(genres);
 
   useEffect(() => {
     dispatch(getGenres());
   }, []);
-  
 
   useEffect(() => {
-    dispatch(fetchMovies({type:'all'}));
+    dispatch(fetchMovies({ type: "all" }));
   }, []);
-  console.log("movies are", movies)
-
 
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,7 +35,9 @@ function Netflix() {
       <Navbar isScrolled={isScrolled} />
       <div className="hero" BackgroundImage>
         <img
-          src={'https://www.themoviedb.org/t/p/original/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg'}
+          src={
+            "https://www.themoviedb.org/t/p/original/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg"
+          }
           alt="background"
           className="background-image"
         />
@@ -62,11 +60,9 @@ function Netflix() {
           </div>
         </div>
       </div>
-    <Slider movies={movies}/>
+      <Slider movies={movies} />
     </div>
   );
 }
 
 export default Netflix;
-
-

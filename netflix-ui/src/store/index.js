@@ -25,6 +25,7 @@ const createArrayFromRawData = (array, moviesArray, genres) => {
       const name = genres.find(({ id }) => id === genre);
       if (name) movieGenres.push(name.name);
     });
+    // console.log("moviesgenres",movieGenres)
     if (movie.backdrop_path)
       moviesArray.push({
         id: movie.id,
@@ -37,7 +38,7 @@ const createArrayFromRawData = (array, moviesArray, genres) => {
 
 const getRawData = async (api, genres, paging = false) => {
   const moviesArray = [];
-  for (let i = 1; moviesArray.length < 60 && i < 10; i++) {
+  for (let i = 1; moviesArray.length < 80 && i < 10; i++) {
     const {
       data: { results },
     } = await axios.get(`${api}${paging ? `&page=${i}` : ""}`);
@@ -54,8 +55,9 @@ export const fetchDataByGenre = createAsyncThunk(
     const {
       netflix: { genres },
     } = thunkAPI.getState();
+    console.log("in fetchdata", genre, type)
     return getRawData(
-      `${TMDB_BASE_URL}/discover/${type}/week?api_key=${API_KEY}&with_genres=${genre}`,
+      `${TMDB_BASE_URL}/discover/${type}?api_key=${API_KEY}&with_genres=${genre}`,
       genres,
       true
     );
@@ -68,6 +70,7 @@ export const fetchMovies = createAsyncThunk(
     const {
       netflix: { genres },
     } = thunkAPI.getState();
+    console.log(genres)
     return getRawData(
       `${TMDB_BASE_URL}/trending/${type}/week?api_key=${API_KEY}`,
       genres,
@@ -99,52 +102,3 @@ export const store = configureStore({
   },
 });
 
-// import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
-// export const updateMessage = createAsyncThunk(
-//     'message/update',
-//     async (data, thunkApi) => {
-//         console.log(data)
-//         const requestOptions = {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({ message:data})
-
-//         };
-//         const res = await fetch('http://localhost:3000/message/add',requestOptions)
-//         return res.json();
-//     }
-// )
-
-// export const readMessage = createAsyncThunk(
-//     'message/read',
-//     async (data, thunkApi) => {
-//         const res = await fetch('http://localhost:3000/message')
-//         return res.json();
-//     }
-// )
-
-// const initialState = {
-//     messages: []
-// }
-// export const messageSlice = createSlice({
-//     name: 'message',
-//     initialState,
-//     reducers: {},
-//     extraReducers: {
-//         [updateMessage.rejected]: (state) => {
-//             console.log('Rejected');
-//         },
-//         [updateMessage.fulfilled]: (state, action) => {
-//             console.log('action.payload:',action.payload);
-//             state.messages = action.payload;
-//         },
-//         [updateMessage.pending]: state => {
-//             console.log('Pending...');
-//         },
-//         [readMessage.fulfilled]: (state, action) => {
-
-//             state.messages = action.payload;
-//         }
-//     }
-// })

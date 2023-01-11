@@ -6,6 +6,7 @@ import Netflix from "./pages/Netflix";
 import SignupRegistered from "./pages/SignupRegistered";
 import SignupRegForm from "./pages/SignupRegForm";
 import Player from "./pages/Player";
+import MoviePage from "./pages/MoviePage"
 import { AnimatePresence } from "framer-motion";
 
 
@@ -27,6 +28,8 @@ function App() {
       <Route exact path="/signup/regform" element={<SignupRegForm />} />
       <Route exact path="/player" element={<Player />} />
       <Route exact path="/" element={<Netflix/>}/>
+      <Route exact path="/movies" element={<MoviePage />} />
+
     </Routes>
     </AnimatePresence>
 
