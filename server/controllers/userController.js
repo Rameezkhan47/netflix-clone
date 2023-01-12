@@ -1,14 +1,13 @@
 const NetflixUsers = require("../models/UserModel");
-const User = require("../models/UserModel");
 
-module.exports.addtoLikedMovies = async (req, res) => {
+module.exports.addToLikedMovies = async (req, res) => {
   try {
     const { email, data } = req.body;
     const user = await NetflixUsers.findOne({ email });
     if (user) {
       const { favoriteContent } = user;
       const contentAlreadyLiked = favoriteContent.find(
-        ({ id }) => (id = data.id)
+        ({ id }) => (id === data.id)
       );
       if (!contentAlreadyLiked) {
         await NetflixUsers.findByIdAndUpdate(
