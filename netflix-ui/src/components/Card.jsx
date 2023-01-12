@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+import { onAuthStateChanged } from "firebase/auth";
+import { firebaseAuth } from "../utils/firebase-config";
 import { useNavigate } from "react-router-dom";
 import video from "../assets/video.mp4";
 import { IoPlayCircleSharp } from "react-icons/io5";
@@ -8,15 +11,34 @@ import { BiChevronDown } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 import AnimatedPage from "../utils/AnimatedPage";
 import "./Card.css";
+import axios from "axios";
 
 export default React.memo( function Card(props) {
   const [isHovered, setIsHovered] = useState(false);
+  const [email, setEmail] = useState("")
   const navigate = useNavigate();
   let timeout;
   const mouseLeaveHandler = () => {
     setIsHovered(false);
     clearTimeout(timeout);
   };
+  useEffect(() => {
+    onAuthStateChanged(firebaseAuth, (currentUser) => {
+      if (currentUser) {
+        setEmail(currentUser.email);
+      } else navigate("/login");
+    });
+  }, [])
+  
+
+const addToList = async () => {
+  try {
+    await axios.post("http://localhost:5000/api/user/add",{email, data:props.movieData})
+  } catch (error) {
+    console.log(error)
+  }
+}
+
   return (
     <div
       className="main-container"
@@ -63,7 +85,7 @@ export default React.memo( function Card(props) {
                 {props.isLiked ? (
                   <BsCheck title="Remove from List" />
                 ) : (
-                  <AiOutlinePlus title="Add to my list" />
+                  <AiOutlinePlus title="Add to my list" onClick={addToList}/>
                 )}
               </div>
               <div className="info">
@@ -72,8 +94,8 @@ export default React.memo( function Card(props) {
             </div>
             <div className="genres flex">
               <ul className="flex">
-                {props.movieData.genres.map((genre) => (
-                  <li>{genre}</li>
+                {props.movieData.genres.map((genre, index) => (
+                  <li key={index} >{genre}</li>
                 ))}
               </ul>
             </div>
