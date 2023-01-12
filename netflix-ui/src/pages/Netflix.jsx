@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { firebaseAuth } from "../utils/firebase-config";
 import Navbar from "../components/Navbar";
 import MovieLogo from "../assets/homerlogo.jpg";
 import { AiOutlineInfoCircle } from "react-icons/ai";
@@ -8,10 +10,12 @@ import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
 import { useDispatch, useSelector } from "react-redux";
 import { getGenres, fetchMovies } from "../store";
 import "./Netflix.css";
-import BackgroundImage from "../components/BackgroundImage";
+import BannerImage from "../components/BannerImage";
 
 function Netflix() {
   const dispatch = useDispatch();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
   const movies = useSelector((state) => state.netflix.movies);
 
 
@@ -21,8 +25,10 @@ function Netflix() {
     dispatch(fetchMovies({ type: "all" }));
   }, []);//load content when the page will first render
 
-  const navigate = useNavigate();
-  const [isScrolled, setIsScrolled] = useState(false);
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (!currentUser) navigate("/login");
+  });
+
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
@@ -30,7 +36,7 @@ function Netflix() {
   return (
     <div>
       <Navbar isScrolled={isScrolled} />
-    <BackgroundImage/>
+    <BannerImage/>
       <Slider movies={movies} />
     </div>
   );

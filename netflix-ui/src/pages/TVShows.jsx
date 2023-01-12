@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { firebaseAuth } from "../utils/firebase-config";
+import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Slider from "../components/Slider";
 import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
@@ -10,6 +11,7 @@ import Navbar from "../components/Navbar";
 import SelectGenres from "../components/SelectGenres";
 import NotAvailable from "../components/NotAvailable";
 import BackgroundImage from "../components/BackgroundImage";
+import BannerImage from "../components/BannerImage";
 
 export default function TVShows() {
   const dispatch = useDispatch();
@@ -30,9 +32,9 @@ export default function TVShows() {
       dispatch(fetchMovies({ genres, type: "tv" }));
     } //load content when the page will first render
   }, [genresLoaded]);
-  // onAuthStateChanged(firebaseAuth, (currentUser) => {
-  //   if (currentUser) navigate("/");
-  // });
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (!currentUser) navigate("/login");
+  });
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
@@ -42,7 +44,7 @@ export default function TVShows() {
     <div className="navbar">
       <Navbar isScrolled={isScrolled} />
     </div>
-    <BackgroundImage/>
+    <BannerImage/>
     <div className="data">
       <SelectGenres genres={genres} type="tv" />
       {movies.length ? <Slider movies={movies} /> : <NotAvailable />}

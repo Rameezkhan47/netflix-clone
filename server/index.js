@@ -1,6 +1,7 @@
 const express = require("express")
 const cors = require("cors")
 const mongoose = require ("mongoose")
+const userRoutes = require("./routes/UserRoutes")
 const app = express();
 
 
@@ -19,5 +20,7 @@ mongoose
     console.log("MONGOOSE CONNECTION ERROR!!!!");
     console.log(err);
   });
+
+  app.use("/api/user", userRoutes)
 
 app.listen(5000, console.log("Listening on port 5000"))
