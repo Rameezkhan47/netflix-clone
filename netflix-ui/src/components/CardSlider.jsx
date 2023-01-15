@@ -38,8 +38,8 @@ function CardSlider(props) {
         </div>
 
             <div className="slider flex  " ref={listRef}>
-              {props.data.map((movie) => {
-                return <Card movieData={movie}  key={movie.id} />;
+              {props.data.map((movie, index) => {
+                return <Card movieData={movie} index={index} key={movie.id} />;
               })}
             </div>
 
