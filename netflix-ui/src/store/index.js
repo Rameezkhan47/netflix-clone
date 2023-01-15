@@ -5,6 +5,7 @@ import {
 } from "@reduxjs/toolkit";
 import { API_KEY, TMDB_BASE_URL } from "../utils/constants";
 import axios from "axios";
+import { async } from "@firebase/util";
 
 const initialState = {
   movies: [],
@@ -55,7 +56,7 @@ export const fetchDataByGenre = createAsyncThunk(
     const {
       netflix: { genres },
     } = thunkAPI.getState();
-    console.log("in fetchdata", genre, type)
+    console.log("in fetchdata", genre, type);
     return getRawData(
       `${TMDB_BASE_URL}/discover/${type}?api_key=${API_KEY}&with_genres=${genre}`,
       genres,
@@ -70,7 +71,7 @@ export const fetchMovies = createAsyncThunk(
     const {
       netflix: { genres },
     } = thunkAPI.getState();
-    console.log(genres)
+    console.log(genres);
     return getRawData(
       `${TMDB_BASE_URL}/trending/${type}/week?api_key=${API_KEY}`,
       genres,
@@ -78,6 +79,31 @@ export const fetchMovies = createAsyncThunk(
     );
   }
 );
+export const getUserLikedMovies = createAsyncThunk(
+  "netflix/getLiked",
+  async (email) => {
+    const test = await axios.get(`http://localhost:5000/api/user/liked/${email}`)
+    console.log("test is", test)
+    const {
+      data: { movies },
+    } = await axios.get(`http://localhost:5000/api/user/liked/${email}`);
+    return movies
+  }
+);
+
+export const removeFromLikedMovies = createAsyncThunk(
+  "netflix/deleteLiked",
+  async ({ movieId, email }) => {
+    const {
+      data: { movies },
+    } = await axios.put("http://localhost:5000/api/user/delete", {
+      email,
+      movieId,
+    });
+    return movies;
+  }
+);
+
 
 const NetflixSlice = createSlice({
   name: "Netflix",
@@ -93,6 +119,12 @@ const NetflixSlice = createSlice({
     builder.addCase(fetchDataByGenre.fulfilled, (state, action) => {
       state.movies = action.payload;
     });
+    builder.addCase(getUserLikedMovies.fulfilled, (state, action) => {
+      state.movies = action.payload;
+    });
+    builder.addCase(removeFromLikedMovies.fulfilled, (state, action) => {
+      state.movies = action.payload;
+    });
   },
 });
 
@@ -101,4 +133,3 @@ export const store = configureStore({
     netflix: NetflixSlice.reducer,
   },
 });
-

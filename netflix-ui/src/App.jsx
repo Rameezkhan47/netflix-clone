@@ -9,6 +9,7 @@ import Player from "./pages/Player";
 import MoviePage from "./pages/MoviePage"
 import TVShows from "./pages/TVShows"
 import { AnimatePresence } from "framer-motion";
+import UserLiked from "./pages/UserLiked";
 
 
 
@@ -31,6 +32,8 @@ function App() {
       <Route exact path="/" element={<Netflix/>}/>
       <Route exact path="/movies" element={<MoviePage />} />
       <Route exact path="/tv" element={<TVShows />} />
+      <Route exact path="/mylist" element={<UserLiked />} />
+
 
 
     </Routes>
